@@ -16,7 +16,7 @@ MoI2.optimise(method=xtb, n_cores=Cores)
 
 print('molecules have been optimised with XTB', flush=True)
 
-MoI2.optimise(method=orca, keywords=ade.OptKeywords(['Opt', 'PBEPBE', 'def2-SVP', 'def2-SVP/C', 'def2/J', 'RIJCOSX', 'D3BJ']), n_cores=Cores)
+MoI2.optimise(method=orca, keywords=ade.OptKeywords(['Opt', 'def2-SVP', 'def2-SVP/C', 'def2/J', 'RIJCOSX', 'D3BJ']), n_cores=Cores)
 
 print('molecules have been optimised with ORCA', flush=True)
 
