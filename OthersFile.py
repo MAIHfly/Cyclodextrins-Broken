@@ -2,7 +2,7 @@ import autode as ade
 import numpy as np
 import os
 
-Cores = 128
+Cores = 8
 ade.Config.n_cores = Cores
 
 orca = ade.methods.ORCA()
@@ -19,13 +19,13 @@ P1.optimise(method=xtb, n_cores=Cores)
 
 print('molecules have been optimised with XTB', flush=True)
 
-R1.optimise(method=orca, keywords=ade.OptKeywords(['Opt', 'def2-SVP', 'def2-SVP/C', 'def2/J', 'RIJCOSX', 'D3BJ']), n_cores=Cores)
-P1.optimise(method=orca, keywords=ade.OptKeywords(['Opt', 'def2-SVP', 'def2-SVP/C', 'def2/J', 'RIJCOSX', 'D3BJ']),n_cores=Cores)
+R1.optimise(method=orca, keywords=ade.OptKeywords(['Opt', 'BP86', 'def2-SVP', 'def2/J', 'RIJCOSX', 'D4']), n_cores=Cores)
+P1.optimise(method=orca, keywords=ade.OptKeywords(['Opt', 'BP86', 'def2-SVP', 'def2/J', 'RIJCOSX', 'D4']),n_cores=Cores)
 
 print('molecules have been optimised with ORCA', flush=True)
 
-CoIR1 = ade.Calculation(name=R1.name, molecule=R1, method=orca, keywords=ade.HessianKeywords(['Freq', 'PBE0', 'def2-TZVP', 'def2-TZVP/C', 'def2/J', 'RIJCOSX', 'D3BJ']), n_cores=Cores)
-CoIP1 = ade.Calculation(name=P1.name, molecule=P1, method=orca, keywords=ade.HessianKeywords(['Freq', 'PBE0', 'def2-TZVP', 'def2-TZVP/C', 'def2/J', 'RIJCOSX', 'D3BJ']), n_cores=Cores)
+CoIR1 = ade.Calculation(name=R1.name, molecule=R1, method=orca, keywords=ade.HessianKeywords(['Freq', 'PBE0', 'def2-SVP', 'def2/J', 'RIJCOSX', 'D4']), n_cores=Cores)
+CoIP1 = ade.Calculation(name=P1.name, molecule=P1, method=orca, keywords=ade.HessianKeywords(['Freq', 'PBE0', 'def2-SVP', 'def2/J', 'RIJCOSX', 'D4']), n_cores=Cores)
 
 print('Calculations have been carried out', flush=True)
 

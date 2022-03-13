@@ -2,7 +2,7 @@ import autode as ade
 import numpy as np
 import os
 
-Cores = 128
+Cores = 36
 ade.Config.n_cores = Cores
 
 orca = ade.methods.ORCA()
@@ -16,11 +16,11 @@ MoI1.optimise(method=xtb, n_cores=Cores)
 
 print('molecules have been optimised with XTB', flush=True)
 
-MoI1.optimise(method=orca, keywords=ade.OptKeywords(['Opt', 'def2-SVP', 'def2-SVP/C', 'def2/J', 'RIJCOSX', 'D3BJ']), n_cores=Cores)
+MoI1.optimise(method=orca, keywords=ade.OptKeywords(['Opt', 'BP86', 'def2-SVP', 'def2/J', 'RIJCOSX', 'D4']), n_cores=Cores)
 
 print('molecules have been optimised with ORCA', flush=True)
 
-CoI1 = ade.Calculation(name=MoI1.name, molecule=MoI1, method=orca, keywords=ade.HessianKeywords(['Freq', 'PBE0', 'def2-TZVP', 'def2-TZVP/C', 'def2/J', 'RIJCOSX', 'D3BJ']), n_cores=Cores)
+CoI1 = ade.Calculation(name=MoI1.name, molecule=MoI1, method=orca, keywords=ade.HessianKeywords(['Freq', 'PBE0', 'def2-SVP', 'def2/J', 'RIJCOSX', 'D4']), n_cores=Cores)
 
 print('Calculations have been carried out', flush=True)
 
